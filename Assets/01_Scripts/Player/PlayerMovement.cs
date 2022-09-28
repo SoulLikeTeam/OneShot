@@ -65,6 +65,16 @@ public class PlayerMovement : MonoBehaviour
         if (isDash == true)
         {
 
+            Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(1.1f, 1.1f), 0, mask);
+
+            if(col != null)
+            {
+
+                dir = transform.position;
+                isDash = false;
+
+            }
+
             transform.position = Vector2.MoveTowards(transform.position, dir, dashPower * Time.deltaTime);
 
         }
@@ -82,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(DashDelayCO());
             StopCoroutine(dashReCoolDownCo);
 
-            Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(2f, 2f), 0, mask);
+            Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(1.3f, 1.3f), 0, mask);
 
             if (col != null)
             {
@@ -137,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
             lastDashPos = new Vector2(inputRawX, inputRawY);
 
         }
+
     }
 
     private Vector2 DashPosSet()
@@ -156,6 +167,10 @@ public class PlayerMovement : MonoBehaviour
         }
         
         dir = new Vector2(transform.position.x + (1.5f * inputX), transform.position.y + (1.5f * inputY));
+
+        Collider2D col = Physics2D.OverlapBox(transform.position, new Vector2(1.1f, 1.1f), 0, mask);
+
+        if(col != null) dir = transform.position;
 
         return dir;
 
