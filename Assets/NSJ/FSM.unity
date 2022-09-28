@@ -226,7 +226,7 @@ MonoBehaviour:
     m_Bits: 64
   eyeSight: 20
   target: {fileID: 1932113795}
-  attackRange: 10
+  attackRange: 3
   curState: 0
 --- !u!58 &781337770
 CircleCollider2D:

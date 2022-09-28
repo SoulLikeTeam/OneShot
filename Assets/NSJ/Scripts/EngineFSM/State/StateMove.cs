@@ -33,8 +33,12 @@ public class StateMove : State<BossFSM>
 
             Vector2 dir = target.position - monsterTransform.position;
 
-            
             monsterTransform.Translate(dir.normalized * Time.deltaTime);
+
+            if (stateMachineClass.GetFlagAttack)
+            {
+                stateMachine.ChangeState<StateAttack>();
+            }
         }
         else
         {

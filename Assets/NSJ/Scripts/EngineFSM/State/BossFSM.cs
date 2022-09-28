@@ -25,10 +25,11 @@ public class BossFSM : MonoBehaviour
     {
         get
         {
-            if (target == null)
-                return false;
+            if (target == null) return false;
 
             float distance = Vector2.Distance(transform.position, target.position);
+
+            bool isTrue = distance <= attackRange;
 
             return (distance <= attackRange);
         }
@@ -44,7 +45,6 @@ public class BossFSM : MonoBehaviour
     private void Update()
     {
         fsmManager.OnUpdate(Time.deltaTime);
-        Debug.Log(curState);
     }
 
     // Å¸°Ù Ã£±â
@@ -54,9 +54,7 @@ public class BossFSM : MonoBehaviour
 
         Collider2D[] findTargets = Physics2D.OverlapCircleAll(transform.position, eyeSight, targetLayerMask);
 
-        if (findTargets.Length > 0)
-            target = findTargets[0].transform;
-
+        if (findTargets.Length > 0) target = findTargets[0].transform;
 
         return target;
     }
