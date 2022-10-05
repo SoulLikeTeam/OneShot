@@ -21,8 +21,8 @@ public class AIBrain : MonoBehaviour
     public void ChangeState(AIState state)
     {
         _beforeState = _currentState;
-        _currentState = state;
         _beforeState.OnStateLeave();
+        _currentState = state;
         _currentState.OnStateEnter();
     }
 
