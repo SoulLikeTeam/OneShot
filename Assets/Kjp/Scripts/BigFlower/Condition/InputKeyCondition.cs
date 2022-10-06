@@ -7,17 +7,16 @@ public class InputKeyCondition : AICondition
     [SerializeField]
     private KeyCode keyCode;
 
+    private bool isInput;
+
     public override bool IfCondition(AIState currentState, AIState nextState)
     {
-        bool input;
         if (Input.GetKeyDown(keyCode))
         {
-            input = true;
+            isInput = true;
         }
-        else
-        {
-            input = false;
-        }
-        return input;
+        else isInput = false;
+
+        return isInput;
     }
 }

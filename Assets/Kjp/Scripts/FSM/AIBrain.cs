@@ -26,10 +26,10 @@ public class AIBrain : MonoBehaviour
         _currentState.OnStateEnter();
     }
 
-    //private void Awake()
-    //{
-    //    transform.GetComponentsInChildren<AIState>(_stateList);
-    //}
+    private void Awake()
+    {
+        _currentState.OnStateEnter();
+    }
 
     private void Update()
     {
